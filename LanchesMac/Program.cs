@@ -1,3 +1,6 @@
+using LanchesMac.Context;
+using Microsoft.EntityFrameworkCore;
+
 namespace LanchesMac;
 
 public class Program
@@ -9,7 +12,10 @@ public class Program
         // Add services to the container.
         builder.Services.AddControllersWithViews();
 
-        // Registra os serviços
+        // Registrando o serviço
+        string connection = builder.Configuration.GetConnectionString("DefaultConnection");
+        builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connection));
+        
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.

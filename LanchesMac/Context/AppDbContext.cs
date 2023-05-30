@@ -1,0 +1,17 @@
+﻿using LanchesMac.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace LanchesMac.Context
+{
+    public class AppDbContext : DbContext
+    {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
+        }
+
+        // A propriedade DbSet define qual classe eu quero mapear 
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Lanche> Lanches { get; set; }
+
+    }
+}
