@@ -23,7 +23,7 @@ namespace LanchesMac.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Lanhces",
+                name: "Lanches",
                 columns: table => new
                 {
                     LancheId = table.Column<int>(type: "int", nullable: false)
@@ -40,9 +40,9 @@ namespace LanchesMac.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Lanhces", x => x.LancheId);
+                    table.PrimaryKey("PK_Lanches", x => x.LancheId);
                     table.ForeignKey(
-                        name: "FK_Lanhces_Categorias_CategoriaId",
+                        name: "FK_Lanches_Categorias_CategoriaId",
                         column: x => x.CategoriaId,
                         principalTable: "Categorias",
                         principalColumn: "CategoriaId",
@@ -50,15 +50,15 @@ namespace LanchesMac.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Lanhces_CategoriaId",
-                table: "Lanhces",
+                name: "IX_Lanches_CategoriaId",
+                table: "Lanches",
                 column: "CategoriaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Lanhces");
+                name: "Lanches");
 
             migrationBuilder.DropTable(
                 name: "Categorias");
