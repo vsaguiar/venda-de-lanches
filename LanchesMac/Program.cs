@@ -1,4 +1,6 @@
 using LanchesMac.Context;
+using LanchesMac.Repositories;
+using LanchesMac.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace LanchesMac;
@@ -15,6 +17,9 @@ public class Program
         // Registrando o serviço
         string connection = builder.Configuration.GetConnectionString("DefaultConnection");
         builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connection));
+
+        builder.Services.AddTransient<ILancheRepository, LancheRepository>();
+        builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
         
         var app = builder.Build();
 
