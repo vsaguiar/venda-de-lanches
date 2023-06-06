@@ -6,7 +6,7 @@
 
 @foreach(var lanche in Model){
     <div>
-        <h4>@lanche.Nome</h4>
+        <h6>Lanche: @lanche.Nome</h6>
         <p><img src="@lanche.ImagemUrl" /></p>
         <h3>Preço: @lanche.Preco.ToString("c")</h3>
     </div>
