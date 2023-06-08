@@ -20,6 +20,11 @@ public class Program
 
         builder.Services.AddTransient<ILancheRepository, LancheRepository>();
         builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+        builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+        // Configurando Session
+        builder.Services.AddMemoryCache();
+        builder.Services.AddSession();
         
         var app = builder.Build();
 
@@ -35,6 +40,9 @@ public class Program
         app.UseStaticFiles();
 
         app.UseRouting();
+
+        // Ativando o Session
+        app.UseSession();
 
         app.UseAuthorization();
 
