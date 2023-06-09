@@ -1,5 +1,4 @@
 ﻿using LanchesMac.Context;
-using Microsoft.Build.ObjectModelRemoting;
 using Microsoft.EntityFrameworkCore;
 
 namespace LanchesMac.Models
@@ -104,6 +103,16 @@ namespace LanchesMac.Models
 
             _context.CarrinhoCompraItens.RemoveRange(carrinhoItens);
             _context.SaveChanges();
+        }
+
+        // Obtendo o valor total do carrinho
+        public decimal GetCarrinhoCompraTotal()
+        {
+            var total = _context.CarrinhoCompraItens
+                        .Where(c => c.CarrinhoCompraId == CarrinhoCompraId)
+                        .Select(c => c.Lanche.Preco * c.Quantidade).Sum();
+
+            return total;
         }
     }
 }
