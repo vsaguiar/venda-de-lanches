@@ -1,4 +1,6 @@
 ﻿using LanchesMac.Context;
+using Microsoft.Build.ObjectModelRemoting;
+using Microsoft.EntityFrameworkCore;
 
 namespace LanchesMac.Models
 {
@@ -13,6 +15,7 @@ namespace LanchesMac.Models
 
         public string CarrinhoCompraId { get; set; }
         public List<CarrinhoCompraItem> CarrinhoCompraItems { get; set; }
+
         public static CarrinhoCompra GetCarrinho(IServiceProvider services)
         {
             // Define uma sessão
@@ -77,5 +80,23 @@ namespace LanchesMac.Models
             }
             _context.SaveChanges();
         }
+
+        // Obtendo todos os itens do carrinho
+        public List<CarrinhoCompraItem> GetCarrinhoCompraItens()
+        {
+            if (CarrinhoCompraItems != null)
+            {
+                return CarrinhoCompraItems;
+            }
+            else
+            {
+                CarrinhoCompraItems = _context.CarrinhoCompraItens
+                                    .Where(c => c.CarrinhoCompraId == CarrinhoCompraId)
+                                    .Include(s => s.Lanche)
+                                    .ToList();
+                return CarrinhoCompraItems;
+            }
+        }
+
     }
 }
