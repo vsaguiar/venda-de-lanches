@@ -18,7 +18,7 @@ namespace LanchesMac.Models
         public static CarrinhoCompra GetCarrinho(IServiceProvider services)
         {
             // Define uma sessão
-            ISession session = services.GetRequiredService<HttpContextAccessor>()?.HttpContext.Session;
+            ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
 
             // Obtém um serviço do tipo do nosso contexto
             var context = services.GetService<AppDbContext>();
