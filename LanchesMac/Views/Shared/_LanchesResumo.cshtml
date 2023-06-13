@@ -4,11 +4,11 @@
     <p><img src="@Model.ImagemUrl" class="img-fluid" /></p>
     <h4>Preço: @Model.Preco.ToString("c")</h4>
 
-    <h6>
+    <h5>
         <a asp-controller="Lanche" asp-action="Details" asp-route-lancheId="@Model.LancheId">
             @Model.Nome
         </a>
-    </h6>
+    </h5>
 
     <p>@Model.DescricaoCurta</p>
     <div>
