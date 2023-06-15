@@ -1,4 +1,5 @@
-﻿using LanchesMac.Models;
+﻿using AspNetCore;
+using LanchesMac.Models;
 using LanchesMac.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,7 +28,47 @@ namespace LanchesMac.Controllers
         [HttpPost]
         public IActionResult Checkout(Pedido pedido)
         {
-            return View();
+            int totalItensPedido = 0;
+            decimal precoTotalPedido = 0.0m;
+
+            // Obtem os itens do carrinho de compra do cliente
+            List<CarrinhoCompraItem> items = _carrinhoCompra.GetCarrinhoCompraItens();
+            _carrinhoCompra.CarrinhoCompraItems = items;
+
+            // Verificar se existem itens de pedido
+            if (_carrinhoCompra.CarrinhoCompraItems.Count == 0)
+            {
+                ModelState.AddModelError("", "Seu carrinho está vazio!");
+            }
+
+            // Calcular o total de itens e o total do pedido
+            foreach (var item in items)
+            {
+                totalItensPedido += item.Quantidade;
+                precoTotalPedido += (item.Lanche.Preco * item.Quantidade);
+            }
+
+            // Atribui os valores obtidos ao pedido
+            pedido.TotalItensPedido = totalItensPedido;
+            pedido.PedidoTotal = precoTotalPedido;
+
+            // Valida os dados do pedido
+            if (ModelState.IsValid)
+            {
+                // Cria o pedido e os detalhes
+                _pedidoRepository.CriarPedido(pedido);
+
+                // Define mensagens ao cliente 
+                ViewBag.CheckoutCompletoMensagem = "Obrigado pelo seu pedido";
+                ViewBag.TotalPedido = _carrinhoCompra.GetCarrinhoCompraTotal();
+
+                // Limpa o carrinho do cliente
+                _carrinhoCompra.LimparCarrinho();
+
+                // Exibe a view com dados do cliente e do pedido
+                return View("~/Views/Pedido/CheckoutCompleto.cshtml", pedido);
+            }
+            return View(pedido);
         }
     }
 }
