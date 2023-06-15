@@ -1,5 +1,4 @@
-﻿using AspNetCore;
-using LanchesMac.Models;
+﻿using LanchesMac.Models;
 using LanchesMac.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
