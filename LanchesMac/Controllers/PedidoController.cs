@@ -1,5 +1,6 @@
 ﻿using LanchesMac.Models;
 using LanchesMac.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LanchesMac.Controllers
@@ -17,6 +18,7 @@ namespace LanchesMac.Controllers
 
 
         // Formulário de confirmação para o cliente
+        [Authorize]
         public IActionResult Checkout()
         {
             return View();
@@ -24,6 +26,7 @@ namespace LanchesMac.Controllers
 
 
         // Trata o formulário de confirmação
+        [Authorize]
         [HttpPost]
         public IActionResult Checkout(Pedido pedido)
         {
