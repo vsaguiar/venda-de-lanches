@@ -13,26 +13,19 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    LanchesMac
+                    Admin
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    @await Component.InvokeAsync("CarrinhoCompraResumo")
-                    &nbsp;&nbsp;
-                    @await Component.InvokeAsync("CategoriaMenu")
-                    <a class="nav-link text-light" asp-area="" asp-controller="Contato" asp-action="Index">Contato</a>
-                    <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    <form class="navbar-form navbar-right" asp-controller="Lanche" asp-action="Search" method="get">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Procurar produto" name="searchString" value="@ViewData["searchString"]" />
-                        </div>
-                    </form>
+                <div class="navbar-collapse collapse d-sm-inline-flex">
+                    <a class="nav-link text-light" asp-area="Admin" asp-controller="Admin" asp-action="Index">Home</a>
+                    <a class="nav-link text-light" asp-area="Admin" asp-controller="AdminLanches" asp-action="Index">Produtos</a>
+                    <a class="nav-link text-light" asp-area="Admin" asp-controller="AdminCategorias" asp-action="Index">Categorias</a>
+                    <a class="nav-link text-light" asp-area="Admin" asp-controller="AdminPedidos" asp-action="Index">Pedidos</a>
                 </div>
             </div>
-            @await Html.PartialAsync("_LoginPartial")
         </nav>
     </header>
     <div class="container">
@@ -46,6 +39,7 @@
             &copy; 2023 - LanchesMac
         </div>
     </footer>
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
