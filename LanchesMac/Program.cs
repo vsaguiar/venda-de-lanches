@@ -40,6 +40,16 @@ public class Program
         builder.Services.AddTransient<IPedidoRepository, PedidoRepository>();
         builder.Services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
 
+        // Registrando a política
+        builder.Services.AddAuthorization(options =>
+        {
+            options.AddPolicy("Admin",
+                politica =>
+                {
+                    politica.RequireRole("Admin");
+                });
+        });
+
         builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         builder.Services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
 
