@@ -5,6 +5,7 @@ using LanchesMac.Repositories.Interfaces;
 using LanchesMac.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using ReflectionIT.Mvc.Paging;
 
 namespace LanchesMac;
 
@@ -16,6 +17,13 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+
+        // Paginação
+        builder.Services.AddPaging(options =>
+        {
+            options.ViewName = "Bootstrap5";
+            options.PageParameterName = "pageindex";
+        });
 
         // Registrando o serviço
         string connection = builder.Configuration.GetConnectionString("DefaultConnection");
