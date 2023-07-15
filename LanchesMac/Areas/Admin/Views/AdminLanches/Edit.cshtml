@@ -10,7 +10,7 @@
     <input type="hidden" asp-for="LancheId" />
     <div class="form-group">
         <label asp-for="Nome" class="control-label"></label>
-        <input asp-for="Nome" class="form-control" />
+        <input asp-for="Nome" class="form-control" autofocus />
         <span asp-validation-for="Nome" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -70,7 +70,7 @@
 
     <hr />
     <div class="form-group">
-        <input type="submit" value="Salvar" class="btn btn-primary" />
+        <input type="submit" value="Salvar" class="btn btn-primary" /> &nbsp;
         <a asp-action="Index" class="btn btn-outline-info">Retornar</a>
     </div>
 </form>

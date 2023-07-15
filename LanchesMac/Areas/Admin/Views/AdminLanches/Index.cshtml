@@ -6,16 +6,17 @@
 
 <h3>Lanches</h3>
 
-<div class="row">
-    <div class="col-md-11">
-        <form method="get" class="form-inline">
+<form method="get" class="form-inline">
+    <div class="row">
+        <div class="col-md-11">
             <input name="filter" class="form-control" placeholder="Pesquisar" value="@Model.RouteValue["Filter"]" />
-        </form>
+        </div>
+        <div class="col-md-1">
+            <button type="submit" class="btn btn-info"> Procurar </button>
+        </div>
     </div>
-    <div class="col-md-1">
-        <button type="submit" class="btn btn-info"> Procurar </button>
-    </div>
-</div>
+</form>
+
 <p />
 <p />
 
