@@ -1,3 +1,4 @@
+using LanchesMac.Areas.Admin.Servicos;
 using LanchesMac.Context;
 using LanchesMac.Models;
 using LanchesMac.Repositories;
@@ -47,6 +48,7 @@ public class Program
         builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
         builder.Services.AddTransient<IPedidoRepository, PedidoRepository>();
         builder.Services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
+        builder.Services.AddScoped<RelatorioVendasService>();
 
         // Registrando a política
         builder.Services.AddAuthorization(options =>
