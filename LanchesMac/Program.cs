@@ -44,6 +44,10 @@ public class Program
             options.Password.RequiredUniqueChars = 1;
         });
 
+
+        builder.Services.Configure<ConfigurationImagens>(builder.Configuration.GetSection("ConfigurationPastaImagens"));
+
+
         builder.Services.AddTransient<ILancheRepository, LancheRepository>();
         builder.Services.AddTransient<ICategoriaRepository, CategoriaRepository>();
         builder.Services.AddTransient<IPedidoRepository, PedidoRepository>();
