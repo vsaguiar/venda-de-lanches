@@ -59,6 +59,10 @@ namespace LanchesMac.Areas.Admin.Controllers
                         await formFile.CopyToAsync(stream);
                     }
                 }
+                else
+                {
+                    ViewData["Erro"] = "Error: Arquivo deve ser do tipo .jpg .gif ou .png";
+                }
             }
             if (files.Count > 1)
             {

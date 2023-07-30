@@ -7,8 +7,9 @@
     <div class="container">
         @if (ViewData["Erro"] != null)
         {
-            <img src="~/images/erro1.png" width="150" height="150" />
-            <h4>@ViewData["Erro"]</h4>
+            <img src="~/images/erro1.png" width="80" height="80" />
+            <h5>@ViewData["Erro"]</h5>
+            return;
         }
     </div>
     <div class="container">
@@ -28,6 +29,7 @@
         }
     </div>
 </div>
+<p />
 <div class="form-group">
     <a class="btn btn-outline-info" asp-controller="AdminImagens" asp-action="GetImagens">Exibir Imagens</a>
 </div>
