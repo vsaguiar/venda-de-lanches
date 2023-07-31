@@ -15,7 +15,7 @@ namespace LanchesMac.Areas.Admin.Servicos
 
         public List<LancheGrafico> GetVendasLanches(int dias = 360)
         {
-            var data = DateTime.Now.AddDays(-360);
+            var data = DateTime.Now.AddDays(-dias);
 
             var lanches = from pd in _context.PedidoDetalhes
                            join l in _context.Lanches on pd.LancheId equals l.LancheId

@@ -53,6 +53,7 @@ public class Program
         builder.Services.AddTransient<IPedidoRepository, PedidoRepository>();
         builder.Services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
         builder.Services.AddScoped<RelatorioVendasService>();
+        builder.Services.AddScoped<GraficoVendasService>();
 
         // Registrando a política
         builder.Services.AddAuthorization(options =>
